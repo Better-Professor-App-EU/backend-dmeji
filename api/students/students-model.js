@@ -3,19 +3,15 @@ const db = require("../../config/dbConfig");
 module.exports = {
   add,
   find,
-  findBy,
-  findById
+  findById,
+  remove
 };
 
 function find() {
   return db("students").select("id", "name");
 }
 
-function findBy(filter) {
-  return db("students").where(filter);
-}
-
-async function add(user) {
+async function add(student) {
   const [id] = await db("students").insert(student);
 
   return findById(id);
@@ -25,4 +21,10 @@ function findById(id) {
   return db("students")
     .where({ id })
     .first();
+}
+
+function remove(id) {
+  return db("students")
+    .where({ id })
+    .del();
 }
