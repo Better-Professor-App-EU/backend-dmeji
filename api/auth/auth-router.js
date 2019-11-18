@@ -9,7 +9,7 @@ const authRouter = express.Router();
 
 const tokenize = require("../middlewares/tokenize");
 
-authRouter.post("register", validateReg, (req, res) => {
+authRouter.post("/register", validateReg, (req, res) => {
   const user = req.body;
   const hash = bcrypt.hashSync(user.password, 11);
   user.password = hash;

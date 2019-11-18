@@ -12,7 +12,10 @@ server.use(express.json());
 
 const authRouter = require("../api/auth/auth-router");
 
-server.use("api/auth/", authRouter);
+const studentsRouter = require("../api/students/students-router");
+
+server.use("/api/auth", authRouter);
+server.use("/api/students", studentsRouter);
 
 server.get("/", (req, res) => {
   res.send("<h1> Yo </h1>");

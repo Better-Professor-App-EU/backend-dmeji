@@ -39,6 +39,7 @@ exports.up = function(knex) {
         .boolean("send to self")
         .defaultTo(false)
         .notNullable();
+      tbl.string("time_stamp", 128);
     })
     .createTable("usersTstudents", tbl => {
       tbl
