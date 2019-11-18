@@ -1,28 +1,30 @@
 const db = require("../../config/dbConfig");
 
 module.exports = {
-  add,
-  find,
-  findBy,
-  findById
+  addStudent,
+  findStudents,
+  findStudentById,
+  removeStudent
 };
 
-function find() {
+function findStudents() {
   return db("students").select("id", "name");
 }
 
-function findBy(filter) {
-  return db("students").where(filter);
-}
-
-async function add(user) {
+async function addStudent(student) {
   const [id] = await db("students").insert(student);
 
   return findById(id);
 }
 
-function findById(id) {
+function findStudentById(id) {
   return db("students")
     .where({ id })
     .first();
+}
+
+function removeStudent(id) {
+  return db("students")
+    .where({ id })
+    .del();
 }
