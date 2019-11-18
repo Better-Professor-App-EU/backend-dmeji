@@ -7,7 +7,7 @@ const Students = require("../students/students-model");
 const studentsRouter = express.Router();
 
 studentsRouter.get("/", (req, res) => {
-  Students.find()
+  Students.findStudents()
     .then(students => {
       res.status(200).json(students);
     })
@@ -21,7 +21,7 @@ studentsRouter.get("/", (req, res) => {
 
 studentsRouter.get("/:id", (req, res) => {
   const { id } = req.params;
-  Students.findById(id)
+  Students.findStudentById(id)
     .then(student => {
       res.status(200).json(student);
     })
@@ -35,7 +35,7 @@ studentsRouter.get("/:id", (req, res) => {
 
 studentsRouter.post("/", validateStudentPost, (req, res) => {
   const student = req.body;
-  Students.add(student)
+  Students.addStudent(student)
     .then(student => {
       res.status(200).json(student);
     })
@@ -49,7 +49,7 @@ studentsRouter.post("/", validateStudentPost, (req, res) => {
 
 studentsRouter.delete("/:id", (req, res) => {
   const { id } = req.params;
-  Students.remove(id)
+  Students.removeStudent(id)
     .then(deleted => {
       if (deleted) {
         res.status(200).json({
