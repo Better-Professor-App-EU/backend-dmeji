@@ -9,7 +9,7 @@ module.exports = {
 
 function findMessages() {
   return db
-    .select({ student_name: "name" }, "text", "send_to_self", "time_stamp")
+    .select({ student_name: "name" }, "text", "send_to_self", "time_stamp",)
     .from("messages")
     .join("students", "messages.student_id", "=", "students.id");
 }
