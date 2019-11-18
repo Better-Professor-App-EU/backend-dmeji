@@ -10,7 +10,7 @@ server.use(helmet());
 server.use(cors());
 server.use(express.json());
 
-const authRouter = require("./api/auth/auth-router");
+const authRouter = require("../api/auth/auth-router");
 
 server.use("api/auth/", authRouter);
 
