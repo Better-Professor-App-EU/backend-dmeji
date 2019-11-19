@@ -4,7 +4,6 @@ module.exports = {
   add,
   findMessages,
   findById,
-  remove
 };
 
 function findMessages() {
@@ -15,13 +14,13 @@ function findMessages() {
 }
 
 async function add(student) {
-  const [id] = await db("students").insert(student);
+  const [id] = await db("messages").insert(message, "id");
 
   return findById(id);
 }
 
 function findById(id) {
-  return db("students")
+  return db("messages")
     .where({ id })
     .first();
 }

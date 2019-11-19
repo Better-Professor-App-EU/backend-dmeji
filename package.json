@@ -39,10 +39,9 @@
     "sqlite3": "^4.1.0"
   },
   "devDependencies": {
-    "jest": "^24.9.0",
-    "supertest": "^4.0.2",
-    "cross-env": "^6.0.3",
     "eslint": "^6.6.0",
-    "nodemon": "^1.19.4"
+    "jest": "^24.9.0",
+    "nodemon": "^1.19.4",
+    "supertest": "^4.0.2"
   }
 }
