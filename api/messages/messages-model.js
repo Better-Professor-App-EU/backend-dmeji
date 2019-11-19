@@ -13,7 +13,7 @@ function findMessages() {
     .join("students", "messages.student_id", "=", "students.id");
 }
 
-async function add(student) {
+async function add() {
   const [id] = await db("messages").insert(message, "id");
 
   return findById(id);

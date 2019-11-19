@@ -68,5 +68,17 @@ studentsRouter.delete("/:id", (req, res) => {
       })
     );
 });
-
+studentsRouter.get("/:id/projects", (req, res) => {
+  const { id } = req.params;
+  Students.getStudentProjects(id)
+    .then(projects => {
+      res.status(200).json(projects);
+    })
+    .catch(err => {
+      res.status(500).json({
+        err,
+        message: "Failed to get student"
+      });
+    });
+});
 module.exports = studentsRouter;

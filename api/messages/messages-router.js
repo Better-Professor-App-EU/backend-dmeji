@@ -29,9 +29,9 @@ messagesRouter.get("/:id", (req, res) => {
   Messages.findById(id)
     .then(message => {
       if (message.send_to_self === 0) {
-        return (message.send_to_self = `send to ${message.student_name}`);
+        (message.send_to_self = `no, send to student number ${message.id}`);
       } else {
-        return message.send_to_self = "yes"
+        message.send_to_self = "yes"
       }
       res.status(200).json(message)
     })
