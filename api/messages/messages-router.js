@@ -47,4 +47,17 @@ messagesRouter.get("/:id", (req, res) => {
     });
 });
 
+messagesRouter.post("/", (req, res) => {
+  const message = req.body;
+  Messages.addMessage(message)
+    .then(message => {
+      res.status(200).json(message);
+    })
+    .catch(err => {
+      res.status(500).json({
+        err,
+        error: message.error
+      });
+    });
+});
 module.exports = messagesRouter;

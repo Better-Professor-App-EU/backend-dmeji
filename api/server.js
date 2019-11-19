@@ -31,7 +31,7 @@ server.use("/api/users", usersRouter);
 
 
 server.get("/", (req, res) => {
-  res.send("<h1> Working </h1>");
+  res.send("<h1> Works </h1>");
 });
 
 module.exports = server;
