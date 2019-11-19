@@ -15,7 +15,6 @@ module.exports = (req, res, next) => {
       message: "missing required user_id field for a new message record"
     });
   } else {
-    req.newMessage = newMessage;
     next();
   }
 };

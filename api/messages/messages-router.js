@@ -4,6 +4,8 @@ const restrict = require("../middlewares/restrict");
 
 const validateUser = require("../middlewares/validateUser");
 
+const validateMessage = require("../middlewares/validateMessage");
+
 const Messages = require("../messages/messages-model");
 
 const messagesRouter = express.Router();
@@ -47,7 +49,7 @@ messagesRouter.get("/:id", (req, res) => {
     });
 });
 
-messagesRouter.post("/", (req, res) => {
+messagesRouter.post("/", validateMessage, (req, res) => {
   const message = req.body;
   Messages.addMessage(message)
     .then(message => {
