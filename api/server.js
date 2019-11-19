@@ -20,7 +20,7 @@ const messagesRouter = require("../api/messages/messages-router");
 
 
 server.use("/api/auth", authRouter);
-server.use("/api/students", studentsRouter);
+server.use("/api/students", studentsRouter);g
 server.use("/api/projects", projectsRouter);
 server.use("/api/messages", messagesRouter);
 
