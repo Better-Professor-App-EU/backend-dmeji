@@ -6,7 +6,7 @@ exports.seed = function(knex) {
         .then(() => {
           return knex('studentsTprojects').truncate()
             .then(() => {
-              return knex('usersTStudents').truncate()
+              return knex('usersTstudents').truncate()
                 .then(() => {
                   return cleaner.clean(knex, {
                     mode: 'truncate',
