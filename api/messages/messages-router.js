@@ -1,10 +1,14 @@
 const express = require("express");
 
+const restrict = require("../middlewares/restrict");
+
+const validateUser = require("../middlewares/validateUser");
+
 const Messages = require("../messages/messages-model");
 
 const messagesRouter = express.Router();
 
-messagesRouter.get("/", (req, res) => {
+messagesRouter.get("/", restrict, validateUser, (req, res) => {
   Messages.findMessages()
     .then(messages => {
       messages.map(message => {
@@ -29,11 +33,11 @@ messagesRouter.get("/:id", (req, res) => {
   Messages.findById(id)
     .then(message => {
       if (message.send_to_self === 0) {
-        (message.send_to_self = `no, send to student number ${message.id}`);
+        message.send_to_self = `no, send to student number ${message.id}`;
       } else {
-        message.send_to_self = "yes"
+        message.send_to_self = "yes";
       }
-      res.status(200).json(message)
+      res.status(200).json(message);
     })
     .catch(err => {
       res.status(500).json({

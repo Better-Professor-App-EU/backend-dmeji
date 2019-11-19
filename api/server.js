@@ -18,11 +18,16 @@ const projectsRouter = require("../api/projects/projects-router");
 
 const messagesRouter = require("../api/messages/messages-router");
 
+const usersRouter = require("../api/users/users-router");
+
+
 
 server.use("/api/auth", authRouter);
 server.use("/api/students", studentsRouter);
 server.use("/api/projects", projectsRouter);
 server.use("/api/messages", messagesRouter);
+server.use("/api/users", usersRouter);
+
 
 
 server.get("/", (req, res) => {
