@@ -4,7 +4,8 @@ module.exports = {
   addStudent,
   findStudents,
   findStudentById,
-  removeStudent
+  removeStudent,
+  getStudentProjects
 };
 
 function findStudents() {
@@ -12,9 +13,9 @@ function findStudents() {
 }
 
 async function addStudent(student) {
-  const [id] = await db("students").insert(student, 'id');
+  const [id] = await db("students").insert(student, "id");
 
-  return findById(id);
+  return findStudentById(id);
 }
 
 function findStudentById(id) {
@@ -27,4 +28,10 @@ function removeStudent(id) {
   return db("students")
     .where({ id })
     .del();
+}
+function getStudentProjects(id) {
+  return db("studentsTprojects as stp")
+    .join("projects as p", "p.id", "stp.project_id")
+    .select("p.project_name")
+    .where({ "stp.student_id": id });
 }

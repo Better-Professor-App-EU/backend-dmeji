@@ -1,7 +1,7 @@
 const db = require("../../config/dbConfig");
 
 module.exports = {
-  add,
+  addMessage,
   findMessages,
   findById,
 };
@@ -13,7 +13,7 @@ function findMessages() {
     .join("students", "messages.student_id", "=", "students.id");
 }
 
-async function add(student) {
+async function addMessage(message) {
   const [id] = await db("messages").insert(message, "id");
 
   return findById(id);
