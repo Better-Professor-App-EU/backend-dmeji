@@ -9,7 +9,6 @@ const studentsRouter = express.Router();
 studentsRouter.get("/", (req, res) => {
   Students.findStudents()
     .then(students => {
-      console.log(process.env.DB)
       res.status(200).json(students);
     })
     .catch(err => {
