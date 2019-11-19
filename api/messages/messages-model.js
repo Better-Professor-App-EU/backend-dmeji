@@ -4,7 +4,6 @@ module.exports = {
   add,
   findMessages,
   findById,
-  remove
 };
 
 function findMessages() {
@@ -14,25 +13,14 @@ function findMessages() {
     .join("students", "messages.student_id", "=", "students.id");
 }
 
-return db
-  .select("project_name", "project_desc", "task_desc")
-  .from("tasks")
-  .join("projects", "tasks.project_id", "=", "projects.id");
-
 async function add(student) {
-  const [id] = await db("students").insert(student);
+  const [id] = await db("messages").insert(message, "id");
 
   return findById(id);
 }
 
 function findById(id) {
-  return db("students")
+  return db("messages")
     .where({ id })
     .first();
-}
-
-function remove(id) {
-  return db("students")
-    .where({ id })
-    .del();
 }

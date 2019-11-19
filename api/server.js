@@ -26,7 +26,7 @@ server.use("/api/messages", messagesRouter);
 
 
 server.get("/", (req, res) => {
-  res.send("<h1> Yo </h1>");
+  res.send("<h1> Working </h1>");
 });
 
 module.exports = server;

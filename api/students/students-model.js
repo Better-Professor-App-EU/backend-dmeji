@@ -12,7 +12,7 @@ function findStudents() {
 }
 
 async function addStudent(student) {
-  const [id] = await db("students").insert(student);
+  const [id] = await db("students").insert(student, 'id');
 
   return findById(id);
 }
