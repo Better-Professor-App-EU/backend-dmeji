@@ -1,3 +1,3 @@
 module.exports = {
-    secret: "open sesame open sesame"
+    secret: process.env.SECRET || "open sesame open sesame"
   };

@@ -20,6 +20,8 @@ module.exports = {
 
   testing: {
     client: "sqlite3",
+    useNullAsDefault: true,
+
     connection: {
       filename: "./database/test-database.db3"
     },
