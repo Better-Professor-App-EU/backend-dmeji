@@ -2,11 +2,13 @@ const express = require("express");
 
 const validateStudentPost = require("../middlewares/validateStudentPost");
 
+const validateUser = require("../middlewares/validateUser");
+
 const Students = require("../students/students-model");
 
 const studentsRouter = express.Router();
 
-studentsRouter.get("/", (req, res) => {
+studentsRouter.get("/", validateUser, (req, res) => {
   Students.findStudents()
     .then(students => {
       res.status(200).json(students);
@@ -19,7 +21,7 @@ studentsRouter.get("/", (req, res) => {
     });
 });
 
-studentsRouter.get("/:id", (req, res) => {
+studentsRouter.get("/:id", validateUser, (req, res) => {
   const { id } = req.params;
   Students.findStudentById(id)
     .then(student => {
@@ -33,7 +35,7 @@ studentsRouter.get("/:id", (req, res) => {
     });
 });
 
-studentsRouter.post("/", validateStudentPost, (req, res) => {
+studentsRouter.post("/", validateStudentPost, validateUser, (req, res) => {
   const student = req.body;
   Students.addStudent(student)
     .then(student => {

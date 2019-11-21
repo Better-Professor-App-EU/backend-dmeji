@@ -49,7 +49,7 @@ messagesRouter.get("/:id", (req, res) => {
     });
 });
 
-messagesRouter.post("/", validateMessage, (req, res) => {
+messagesRouter.post("/", validateMessage, validateUser, (req, res) => {
   const message = req.body;
   Messages.addMessage(message)
     .then(message => {
