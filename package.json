@@ -8,6 +8,10 @@
     "test": "cross-env DB_ENV=testing jest --watchAll",
     "start": "node index.js"
   },
+  "engines": {
+    "node": "12.12.0",
+    "npm": "6.12.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Better-Professor-App-EU/backend-dmeji.git"
