@@ -35,7 +35,7 @@ studentsRouter.get("/:id", validateUser, (req, res) => {
     });
 });
 
-studentsRouter.post("/", validateStudentPost, validateUser, (req, res) => {
+studentsRouter.post("/", validateStudentPost, (req, res) => {
   const student = req.body;
   Students.addStudent(student)
     .then(student => {

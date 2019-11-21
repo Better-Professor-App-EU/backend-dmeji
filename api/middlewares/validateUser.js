@@ -1,5 +1,5 @@
-module.exports = () => (req, res, next) => {
-    if (user.user_id === req.user.id) {
+module.exports = (userId) => (req, res, next) => {
+    if (userId === req.user.id) {
       next();
     } else {
       res.status(403).json({

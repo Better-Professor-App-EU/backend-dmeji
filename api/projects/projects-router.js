@@ -1,12 +1,10 @@
 const express = require("express");
 
-const validateUser = require("../middlewares/validateUser");
-
 const Projects = require("../projects/projects-model");
 
 const projectsRouter = express.Router();
 
-projectsRouter.get("/", validateUser, (req, res) => {
+projectsRouter.get("/", (req, res) => {
   Projects.findProjects()
     .then(projects => {
       if (projects && projects.length > 0) {
