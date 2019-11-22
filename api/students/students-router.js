@@ -8,7 +8,7 @@ const Students = require("../students/students-model");
 
 const studentsRouter = express.Router();
 
-studentsRouter.get("/", validateUser, (req, res) => {
+studentsRouter.get("/", (req, res) => {
   Students.findStudents()
     .then(students => {
       res.status(200).json(students);
@@ -21,7 +21,7 @@ studentsRouter.get("/", validateUser, (req, res) => {
     });
 });
 
-studentsRouter.get("/:id", validateUser, (req, res) => {
+studentsRouter.get("/:id", (req, res) => {
   const { id } = req.params;
   Students.findStudentById(id)
     .then(student => {
