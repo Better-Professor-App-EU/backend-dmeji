@@ -10,7 +10,7 @@ const Messages = require("../messages/messages-model");
 
 const messagesRouter = express.Router();
 
-messagesRouter.get("/", restrict, validateUser, (req, res) => {
+messagesRouter.get("/", restrict, (req, res) => {
   Messages.findMessages()
     .then(messages => {
       messages.map(message => {
